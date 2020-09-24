@@ -60,47 +60,9 @@ namespace ECM.Controllers
         [SerializeField]
         private float _airControl = 0.2f;
 
-        [Header("Crouch")]
-        [Tooltip("Can the character crouch")]
-        [SerializeField]
-        private bool _canCrouch = true;
-
         [Tooltip("The character's capsule height while standing.")]
         [SerializeField]
         private float _standingHeight = 2.0f;
-
-        [Tooltip("The character's capsule height while crouching.")]
-        [SerializeField]
-        private float _crouchingHeight = 1.0f;
-
-        [Header("Jump")]
-        [Tooltip("The initial jump height (in meters).")]
-        [SerializeField]
-        private float _baseJumpHeight = 1.5f;
-
-        [Tooltip("The extra jump time (e.g. holding jump button) in seconds.")]
-        [SerializeField]
-        private float _extraJumpTime = 0.5f;
-
-        [Tooltip("Acceleration while jump button is held down, given in meters / sec^2."+
-                 "As rule of thumb, configure it to your character's gravity.")]
-        [SerializeField]
-        private float _extraJumpPower = 25.0f;
-
-        [FormerlySerializedAs("_jumpToleranceTime")]
-        [Tooltip("How early before hitting the ground you can press jump, and still perform the jump.\n" +
-                 "Typical values goes from 0.15f to 0.5f.")]
-        [SerializeField]
-        private float _jumpPreGroundedToleranceTime = 0.15f;
-
-        [Tooltip("How long after leaving the ground you can press jump, and still perform the jump." +
-                 "Typical values goes from 0.15f to 0.5f.")]
-        [SerializeField]
-        private float _jumpPostGroundedToleranceTime = 0.15f;
-
-        [Tooltip("Maximum mid-air jumps")]
-        [SerializeField]
-        private float _maxMidAirJumps = 1;
 
         [Header("Animation")]
         [Tooltip("Should use root motion?\n" +
@@ -271,16 +233,6 @@ namespace ECM.Controllers
         }
 
         /// <summary>
-        /// Can crouch? Enable / Disable crouching behavior.
-        /// </summary>
-
-        public bool canCrouch
-        {
-            get { return _canCrouch; }
-            set { _canCrouch = value; }
-        }
-
-        /// <summary>
         /// The character's capsule height while standing.
         /// </summary>
 
@@ -288,88 +240,6 @@ namespace ECM.Controllers
         {
             get { return _standingHeight; }
             set { _standingHeight = Mathf.Max(0.0f, value); }
-        }
-
-        /// <summary>
-        /// The character's capsule height while crouching.
-        /// </summary>
-
-        public float crouchingHeight
-        {
-            get { return _crouchingHeight; }
-            set { _crouchingHeight = Mathf.Max(0.0f, value); }
-        }
-
-        /// <summary>
-        /// The initial jump height (in meters).
-        /// </summary>
-
-        public float baseJumpHeight
-        {
-            get { return _baseJumpHeight; }
-            set { _baseJumpHeight = Mathf.Max(0.0f, value); }
-        }
-
-        /// <summary>
-        /// Computed jump impulse.
-        /// </summary>
-
-        public float jumpImpulse
-        {
-            //get { return Mathf.Sqrt(2.0f * baseJumpHeight * movement.gravity); }
-            get { return Mathf.Sqrt(2.0f * baseJumpHeight * movement.gravity.magnitude); }
-        }
-
-        /// <summary>
-        /// The extra jump time (e.g. holding jump button) in seconds.
-        /// </summary>
-
-        public float extraJumpTime
-        {
-            get { return _extraJumpTime; }
-            set { _extraJumpTime = Mathf.Max(0.0f, value); }
-        }
-
-        /// <summary>
-        /// Acceleration while jump button is held down, given in meters / sec^2.
-        /// </summary>
-
-        public float extraJumpPower
-        {
-            get { return _extraJumpPower; }
-            set { _extraJumpPower = Mathf.Max(0.0f, value); }
-        }
-
-        /// <summary>
-        /// How early before hitting the ground you can press jump, and still perform the jump.
-        /// Typical values goes from 0.05f to 0.5f, the higher the value, the easier to "chain" jumps and vice-versa.
-        /// </summary>
-
-        public float jumpPreGroundedToleranceTime
-        {
-            get { return _jumpPreGroundedToleranceTime; }
-            set { _jumpPreGroundedToleranceTime = Mathf.Max(value, 0.0f); }
-        }
-
-        /// <summary>
-        /// How long after leaving the ground you can press jump, and still perform the jump.
-        /// Typical values goes from 0.05f to 0.5f, the higher the value, the easier to "chain" jumps and vice-versa.
-        /// </summary>
-
-        public float jumpPostGroundedToleranceTime
-        {
-            get { return _jumpPostGroundedToleranceTime; }
-            set { _jumpPostGroundedToleranceTime = Mathf.Max(value, 0.0f); }
-        }
-
-        /// <summary>
-        /// Maximum mid-air jumps.
-        /// </summary>
-
-        public float maxMidAirJumps
-        {
-            get { return _maxMidAirJumps; }
-            set { _maxMidAirJumps = Mathf.Max(0.0f, value); }
         }
 
         /// <summary>
@@ -404,40 +274,6 @@ namespace ECM.Controllers
                 if (animator != null)
                     animator.applyRootMotion = value;
             }
-        }
-
-        /// <summary>
-        /// Jump input command.
-        /// </summary>
-
-        public bool jump
-        {
-            get { return _jump; }
-            set
-            {
-                // If jump is released, allow to jump again
-
-                if (_jump && value == false)
-                {
-                    _canJump = true;
-                    _jumpButtonHeldDownTimer = 0.0f;
-                }
-
-                // Update jump value; if pressed, update held down timer
-
-                _jump = value;
-                if (_jump)
-                    _jumpButtonHeldDownTimer += Time.deltaTime;
-            }
-        }
-
-        /// <summary>
-        /// Is the character jumping? (moving up result of jump button press).
-        /// </summary>
-
-        public bool isJumping
-        {
-            get { return _isJumping; }
         }
 
         /// <summary>
@@ -490,18 +326,6 @@ namespace ECM.Controllers
             get { return _restoreVelocityOnResume; }
             set { _restoreVelocityOnResume = value; }
         }
-
-        /// <summary>
-        /// Crouch input command.
-        /// </summary>
-
-        public bool crouch { get; set; }
-
-        /// <summary>
-        /// Is the character crouching?
-        /// </summary>
-
-        public bool isCrouching { get; protected set; }
 
         #endregion
 
@@ -562,188 +386,6 @@ namespace ECM.Controllers
         }
 
         /// <summary>
-        /// Perform jump logic.
-        /// </summary>
-
-        protected virtual void Jump()
-        {
-            // Update _isJumping flag state
-
-            if (isJumping)
-            {
-                // On landing, reset _isJumping flag
-
-                if (!movement.wasGrounded && movement.isGrounded)
-                    _isJumping = false;
-            }
-
-            // Update jump ungrounded timer (post jump tolerance time)
-
-            if (movement.isGrounded)
-                _jumpUngroundedTimer = 0.0f;
-            else
-                _jumpUngroundedTimer += Time.deltaTime;
-
-            // If jump button not pressed, or still not released, return
-
-            if (!_jump || !_canJump)
-                return;
-
-            // Is jump button pressed within pre jump tolerance time?
-
-            if (_jumpButtonHeldDownTimer > _jumpPreGroundedToleranceTime)
-                return;
-
-            // If not grounded or no post grounded tolerance time remains, return
-
-            if (!movement.isGrounded && _jumpUngroundedTimer > _jumpPostGroundedToleranceTime)
-                return;
-
-            _canJump = false;           // Halt jump until jump button is released
-            _isJumping = true;          // Update isJumping flag
-            _updateJumpTimer = true;    // Allow mid-air jump to be variable height
-
-            // Prevent _jumpPostGroundedToleranceTime condition to pass until character become grounded again (_jumpUngroundedTimer reseted).
-
-            _jumpUngroundedTimer = _jumpPostGroundedToleranceTime;
-
-            // Apply jump impulse
-
-            movement.ApplyVerticalImpulse(jumpImpulse);
-
-            // 'Pause' grounding, allowing character to safely leave the 'ground'
-
-            movement.DisableGrounding();
-        }
-
-        /// <summary>
-        /// Mid-air jump logic.
-        /// </summary>
-
-        protected virtual void MidAirJump()
-        {
-            // Reset mid-air jumps counter
-
-            if (_midAirJumpCount > 0 && movement.isGrounded)
-                _midAirJumpCount = 0;
-
-            // If jump button not pressed, or still not released, return
-
-            if (!_jump || !_canJump)
-                return;
-
-            // If grounded, return
-
-            if (movement.isGrounded)
-                return;
-
-            // Have mid-air jumps?
-
-            if (_midAirJumpCount >= _maxMidAirJumps)
-                return;
-
-            _midAirJumpCount++;         // Increase mid-air jumps counter
-
-            _canJump = false;           // Halt jump until jump button is released
-            _isJumping = true;          // Update isJumping flag
-            _updateJumpTimer = true;    // Allow mid-air jump to be variable height
-
-            // Apply jump impulse
-
-            movement.ApplyVerticalImpulse(jumpImpulse);
-
-            // 'Pause' grounding, allowing character to safely leave the 'ground'
-
-            movement.DisableGrounding();
-        }
-
-        /// <summary>
-        /// Perform variable jump height logic.
-        /// </summary>
-
-        protected virtual void UpdateJumpTimer()
-        {
-            if (!_updateJumpTimer)
-                return;
-
-            // If jump button is held down and extra jump time is not exceeded...
-
-            if (_jump && _jumpTimer < _extraJumpTime)
-            {
-                // Calculate how far through the extra jump time we are (jumpProgress),
-
-                var jumpProgress = _jumpTimer / _extraJumpTime;
-
-                // Apply proportional extra jump power (acceleration) to simulate variable height jump,
-                // this method offers better control and less 'floaty' feel.
-
-                var proportionalJumpPower = Mathf.Lerp(_extraJumpPower, 0f, jumpProgress);
-                movement.ApplyForce(transform.up * proportionalJumpPower, ForceMode.Acceleration);
-
-                // Update jump timer
-
-                _jumpTimer = Mathf.Min(_jumpTimer + Time.deltaTime, _extraJumpTime);
-            }
-            else
-            {
-                // Button released or extra jump time ends, reset info
-
-                _jumpTimer = 0.0f;
-                _updateJumpTimer = false;
-            }
-        }
-
-        /// <summary>
-        /// Handle character's Crouch / UnCrouch.
-        /// </summary>
-        
-        protected virtual void Crouch()
-        {
-            // If crouching behaviour is disabled, return
-
-            if (!canCrouch)
-                return;
-
-            // Process crouch input command
-
-            if (crouch)
-            {
-                // If already crouching, return
-
-                if (isCrouching)
-                    return;
-
-                // Set capsule crouching height
-
-                movement.SetCapsuleHeight(crouchingHeight);
-
-                // Update Crouching state
-
-                isCrouching = true;
-            }
-            else
-            {
-                // If not crouching, return
-
-                if (!isCrouching)
-                    return;
-
-                // Check if character can safely stand up
-
-                if (!movement.ClearanceCheck(standingHeight))
-                    return;
-
-                // Character can safely stand up, set capsule standing height
-
-                movement.SetCapsuleHeight(standingHeight);
-
-                // Update crouching state
-
-                isCrouching = false;
-            }
-        }
-
-        /// <summary>
         /// Calculate the desired movement velocity.
         /// Eg: Convert the input (moveDirection) to movement velocity vector,
         ///     use navmesh agent desired velocity, etc.
@@ -789,12 +431,6 @@ namespace ECM.Controllers
                 movement.Move(desiredVelocity, speed, acceleration, deceleration, currentFriction,
                     currentBrakingFriction, !allowVerticalMovement);
             }
-
-            // Jump logic
-            
-            Jump();
-            MidAirJump();
-            UpdateJumpTimer();
 
             // Update root motion state,
             // should animator root motion be enabled? (eg: is grounded)
@@ -852,10 +488,6 @@ namespace ECM.Controllers
                 y = 0.0f,
                 z = Input.GetAxisRaw("Vertical")
             };
-
-            jump = Input.GetButton("Jump");
-
-            crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
@@ -882,17 +514,9 @@ namespace ECM.Controllers
 
             airFriction = _airFriction;
             airControl = _airControl;
-
-            canCrouch = _canCrouch;
-            crouchingHeight = _crouchingHeight;
+        
             standingHeight = _standingHeight;
 
-            baseJumpHeight = _baseJumpHeight;
-            extraJumpTime = _extraJumpTime;
-            extraJumpPower = _extraJumpPower;
-            jumpPreGroundedToleranceTime = _jumpPreGroundedToleranceTime;
-            jumpPostGroundedToleranceTime = _jumpPostGroundedToleranceTime;
-            maxMidAirJumps = _maxMidAirJumps;
         }
 
         /// <summary>
@@ -929,9 +553,6 @@ namespace ECM.Controllers
 
             Move();
 
-            // Handle crouch
-
-            Crouch();
         }
 
         public virtual void Update()
