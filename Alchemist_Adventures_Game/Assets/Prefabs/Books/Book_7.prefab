@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3343791286055603644}
   - component: {fileID: 3343791286054309276}
   - component: {fileID: 3343791286053310300}
+  - component: {fileID: -7356365454925010964}
   m_Layer: 0
   m_Name: Book_7
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-7356365454925010964
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343791286055571868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: eab738598427eb343b8f7ac3c8eef359, type: 3}

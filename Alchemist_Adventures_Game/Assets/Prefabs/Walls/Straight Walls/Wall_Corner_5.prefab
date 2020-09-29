@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 469472}
   - component: {fileID: 3355984}
   - component: {fileID: 2348850}
+  - component: {fileID: 3506035710601310259}
   m_Layer: 0
   m_Name: Wall_Corner_5
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3506035710601310259
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 1a19c18c5b5b48842bd79e026eddbdd6, type: 3}

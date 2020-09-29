@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 442940}
   - component: {fileID: 3315948}
   - component: {fileID: 2313626}
+  - component: {fileID: -1528164629753705834}
   m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1528164629753705834
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f615bac79a0920046b2108720571d5ad, type: 3}

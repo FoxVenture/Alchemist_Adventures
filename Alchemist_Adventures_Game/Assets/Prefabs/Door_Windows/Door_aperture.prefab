@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 462294}
   - component: {fileID: 3309220}
   - component: {fileID: 2354366}
+  - component: {fileID: -8489331160986053124}
   m_Layer: 0
   m_Name: Door_aperture
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-8489331160986053124
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 84f681d295f1d3241b4ce2c657cbd367, type: 3}
 --- !u!1 &186866
 GameObject:
   m_ObjectHideFlags: 0

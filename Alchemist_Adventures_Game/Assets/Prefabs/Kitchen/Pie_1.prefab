@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 419246}
   - component: {fileID: 3343300}
   - component: {fileID: 2342242}
+  - component: {fileID: -2302456200465349986}
   m_Layer: 0
   m_Name: Pie_1
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2302456200465349986
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 778d7925cfc06464a9c23ec7fbc7f496, type: 3}
 --- !u!1 &176642
 GameObject:
   m_ObjectHideFlags: 0

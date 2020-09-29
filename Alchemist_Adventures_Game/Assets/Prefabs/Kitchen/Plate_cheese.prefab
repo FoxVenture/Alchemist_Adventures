@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 485002}
   - component: {fileID: 3397854}
   - component: {fileID: 2318300}
+  - component: {fileID: 6983510900232563779}
   m_Layer: 0
   m_Name: Plate_cheese
   m_TagString: Untagged
@@ -245,3 +246,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6983510900232563779
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 092fe185a0c38d34e9551bda68557d26, type: 3}

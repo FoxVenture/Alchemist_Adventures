@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 477528}
   - component: {fileID: 3300756}
   - component: {fileID: 2396286}
+  - component: {fileID: -4561963688327245799}
   m_Layer: 0
   m_Name: Stairs_round_3
   m_TagString: Untagged
@@ -163,3 +164,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-4561963688327245799
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 01f3380e064ddee47b81f256dcd2c28d, type: 3}

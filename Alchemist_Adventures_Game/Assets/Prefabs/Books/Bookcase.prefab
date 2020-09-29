@@ -1337,8 +1337,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176782}
-  m_LocalRotation: {x: -0.07899618, y: -0.000000018545352, z: -0.0000000068992425,
-    w: 0.996875}
+  m_LocalRotation: {x: -0.07899618, y: -0.000000018545352, z: -0.0000000068992425, w: 0.996875}
   m_LocalPosition: {x: 0.003, y: 0.225, z: 0.013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1567,6 +1566,7 @@ GameObject:
   - component: {fileID: 485376}
   - component: {fileID: 3393120}
   - component: {fileID: 2331118}
+  - component: {fileID: 6465976649449458228}
   m_Layer: 0
   m_Name: Bookcase
   m_TagString: Untagged
@@ -1641,6 +1641,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6465976649449458228
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 85928389f1f72624c96aa7e66d3d4eff, type: 3}
 --- !u!1 &198098
 GameObject:
   m_ObjectHideFlags: 0

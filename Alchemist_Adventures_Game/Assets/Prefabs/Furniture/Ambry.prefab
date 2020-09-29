@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 431050}
   - component: {fileID: 3358782}
   - component: {fileID: 2351838}
+  - component: {fileID: -5380666589881683342}
+  - component: {fileID: 3913717830611657275}
   m_Layer: 0
   m_Name: Ambry
   m_TagString: Untagged
@@ -164,6 +166,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-5380666589881683342
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 579821ea9c6936e4c8e99b5c6fcf029d, type: 3}
+--- !u!64 &3913717830611657275
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 579821ea9c6936e4c8e99b5c6fcf029d, type: 3}
 --- !u!1 &164810
 GameObject:
   m_ObjectHideFlags: 0
